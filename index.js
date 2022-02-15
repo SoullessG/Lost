@@ -12,7 +12,6 @@ const io = socketio(httpserver);
 const gamedirectory = path.join(__dirname, "html");
 
 app.use(express.static(gamedirectory));
-
 httpserver.listen(30);
 
 var rooms = [];
@@ -28,11 +27,12 @@ io.on('connection', function(socket) {
 					room = master;
 				}
 				rooms[socket.id] = room;
-				usernames[socket.id] = username;
+				usernames[socket.id] = [key = username, value = password];
+				passwords[socket.id] = password
 				socket.leaveAll();
-				socket.join(room);
+				socket.join(room, password);
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
-				socket.emit("join", room);
+				socket.emit("join", room, password);
 			}
 			else if (username === au2) {
 				if (room = master) {
