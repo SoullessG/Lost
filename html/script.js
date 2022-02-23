@@ -1,3 +1,4 @@
+from FileList import ;
 var socket;
 var usernameInput;
 var chatIDInput;
@@ -6,9 +7,14 @@ var chatRoom;
 var dingSound;
 var messages = [];
 var delay = true;
-var password;
+var userId;
+
+function first(){
+	userId = main.py.("user_id");
+}
 
 function onload(){
+
   socket = io();
   usernameInput = document.getElementById("NameInput");
   chatIDInput = document.getElementById("IDInput");
@@ -34,7 +40,7 @@ function onload(){
     }
     for (i = 0; i < messages.length; i++){
         document.getElementById("Message"+i).innerHTML = messages[i];
-        document.getElementById("Message"+i).style.color = "#303030";
+        document.getElementById("Message"+i).style.color = "darkred";
     }
   })
 }

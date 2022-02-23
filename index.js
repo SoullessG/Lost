@@ -5,6 +5,7 @@ const path = require("path");
 const au1 = process.env['User1'];
 const au2 = process.env['User2'];
 const master = process.env['Master'];
+const db_url = process.env['db.url'];
 const app = express();
 const httpserver = http.Server(app);
 const io = socketio(httpserver);
@@ -18,6 +19,7 @@ var rooms = [];
 var usernames = [];
 var passwords = [];
 
+	
 io.on('connection', function(socket) {
 
 	socket.on("join", function(room, username,password) {
@@ -63,6 +65,7 @@ io.on('connection', function(socket) {
 		io.in(rooms[socket.id]).emit("recieve", usernames[socket.id] + " : " + message);
 	})
 
+ 	
 	socket.on("recieve", function(message) {
 		socket.emit("recieve", message);
 	})
