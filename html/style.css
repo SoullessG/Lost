@@ -20,6 +20,7 @@ input{
   font-size: 120%;
   border-color: #000;
 	border: 10px;
+	font-family: 'Great Vibes'
 }
 
 .Message{
@@ -36,5 +37,12 @@ title {
   text-size: 100px;
 }
 life {
-	font: "Great Vibes"
+	font-size: 20px;
+}
+
+#Messages {
+	height: 500px !important;
+	width: default;
+	box-sizing: border-box;
+	overflow: scroll;
 }

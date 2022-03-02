@@ -1,4 +1,4 @@
-from FileList import ;
+
 var socket;
 var usernameInput;
 var chatIDInput;
@@ -7,11 +7,7 @@ var chatRoom;
 var dingSound;
 var messages = [];
 var delay = true;
-var userId;
-
-function first(){
-	userId = main.py.("user_id");
-}
+var user_id;
 
 function onload(){
 
@@ -29,7 +25,7 @@ function onload(){
 
   socket.on("recieve", function(message){
     console.log(message);
-    if (messages.length < 16){
+    if (messages.length < 21){
       messages.push(message);
       dingSound.currentTime = 0;
       dingSound.play();

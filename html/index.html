@@ -1,25 +1,23 @@
 <!DOCTYPE HTML>
 <html>
-
+		<link href='https://fonts.googleapis.com/css?family=Great Vibes' rel='stylesheet'>
+<start first="first()">
 <head>
 	<title> Lost </title>
-	<title>Repl Auth</title>
-	<link href="https://replit.com/@Lupo-Demone/Lost#GreatVibes-Regular.ttf" rel="stylesheet">
 	<meta name="charset" charset="cursive">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://embed.runkit.com" data-element-id="Gone8">
-
-	</script>
 	<script src="socket.io/socket.io.js">
 
 	</script>
+	<style>
+		life{
+			font-family: 'Great Vibes'
+		}
+	</style>
 </head>
 <body onload="onload()">
-
-	<script>
-
-	</script>
 	<life class="all">
 		<div id="Main">
 			<audio id="Ding" src="Ding.mp3"> </audio>
@@ -37,6 +35,7 @@
       </div>
       <h2 id = "RoomID"> Room : None </h2>
       <div id = "Chat">
+			<mes id = "Messages">	
         <p id = "Message0" class = "Message"> - </p>
         <p id = "Message1" class = "Message"> - </p>
         <p id = "Message2" class = "Message"> - </p>
@@ -53,6 +52,12 @@
 				<p id = "Message13" class = "Message"> - </p>
 				<p id = "Message14" class = "Message"> - </p>
 				<p id = "Message15" class = "Message"> - </p>
+				<p id = "Message16" class = "Message"> - </p>
+				<p id = "Message17" class = "Message"> - </p>
+				<p id = "Message18" class = "Message"> - </p>
+				<p id = "Message19" class = "Message"> - </p>
+				<p id = "Message20" class = "Message"> - </p>
+			</mes>
         <label id = "MessageLabel"> Message </label>
         <input id = "ComposedMessage" type = "text">
         <input id = "SendMessage" onclick="Send()" value = "Send" class = "Button" type = "submit">
