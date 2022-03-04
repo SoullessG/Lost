@@ -8,12 +8,11 @@ const master = process.env['Master'];
 const app = express();
 const httpserver = http.Server(app);
 const io = socketio(httpserver);
-//const userId = require("")
 
 const gamedirectory = path.join(__dirname, "html");
 
 app.use(express.static(gamedirectory));
-httpserver.listen(30);
+httpserver.listen(3000);
 
 var rooms = [];
 var usernames = [];
@@ -22,11 +21,11 @@ var usernames = [];
 io.on('connection', function(socket) {
 
 	socket.on("join", function(room, username) {
-		//username = userId;
 		if (username != "") {
-			if (username === au1) {
-				if ((room === master)) {
+			if (username === au1){ 
+				if (room === master) {
 					room = master;
+					
 				}
 				rooms[socket.id] = room;
 				usernames[socket.id] = username
@@ -35,12 +34,12 @@ io.on('connection', function(socket) {
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
 				socket.emit("join", room);
 			}
-			else if (username === au2) {
-				if (room = master) {
+			else if (username === au2){ 
+				if (room === master) {
 					room = master;
 				}
 				rooms[socket.id] = room;
-				usernames[socket.id] = username;
+				usernames[socket.id] = username
 				socket.leaveAll();
 				socket.join(room);
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
@@ -56,6 +55,7 @@ io.on('connection', function(socket) {
 				socket.join(room);
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
 				socket.emit("join", room);
+				<scrip>
 			}
 		}
 	})

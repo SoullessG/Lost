@@ -1,4 +1,3 @@
-
 var socket;
 var usernameInput;
 var chatIDInput;
@@ -7,25 +6,24 @@ var chatRoom;
 var dingSound;
 var messages = [];
 var delay = true;
-var user_id;
+var RA;
 
 function onload(){
-
   socket = io();
   usernameInput = document.getElementById("NameInput");
   chatIDInput = document.getElementById("IDInput");
   messageInput = document.getElementById("ComposedMessage");
   chatRoom = document.getElementById("RoomID");
   dingSound = document.getElementById("Ding");
-	passwordinput = document.getElementById("PassInput");
-
+	RA = (document.getElementById("RA").style.opacity = 0);
+	
   socket.on("join", function(room){
-    chatRoom.innerHTML = "Room : " + room;
+    chatRoom.innerHTML = "Chatroom : " + room;
   })
 
   socket.on("recieve", function(message){
     console.log(message);
-    if (messages.length < 21){
+    if (messages.length < 11){
       messages.push(message);
       dingSound.currentTime = 0;
       dingSound.play();
@@ -33,22 +31,23 @@ function onload(){
     else{
       messages.shift();
       messages.push(message);
+			dingSound.play();
     }
     for (i = 0; i < messages.length; i++){
         document.getElementById("Message"+i).innerHTML = messages[i];
-        document.getElementById("Message"+i).style.color = "darkred";
+        document.getElementById("Message"+i);
     }
   })
 }
 
 function Connect(){
-  socket.emit("join", chatIDInput.value, usernameInput.value, passwordinput.value);
+  socket.emit("join", chatIDInput.value, usernameInput.value,RA);
 }
 
 function Send(){
   if (delay && messageInput.value.replace(/\s/g, "") != ""){
     delay = false;
-    setTimeout(delayReset, 1000);
+    setTimeout(delayReset, 100);
     socket.emit("send", messageInput.value);
     messageInput.value = "";
   }

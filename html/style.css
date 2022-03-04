@@ -1,48 +1,45 @@
-body1{
-  background: #FFF;
-  color: #FFF;
-}
-
-body2{
-  background: #000000;
-  color: #303030;
-}
+body{
+  background: lightsteelblue;
+	font-family: 'Beth Ellen';
+	font-size: 12px;
+	color: white;
+	font-style: italic thin;
+}	
 
 label{
-  width: auto;
-  display: inline-block;
-  text-align: left;
+  width: auto-flow;
+  display: inline-flex;
+}
+
+#RA {
+	opacity: 0;
 }
 
 input{
-  background: cyan;
+  background: slategray;
   color: darkpurple;
   font-size: 120%;
-  border-color: #000;
-	border: 10px;
-	font-family: 'Great Vibes'
+  border: 2px solid black;
+	font-family: 'Beth Ellen';
 }
 
 .Message{
-  color: darkred;
+  color: darkslateblue;
+	font-size: 14px;
+	max-height: 75px;
+	overflow-y: scroll;
+	display: block;
+	font-weight: bold;
+	border: 1px solid black;
 }
 
 #Main{
-  background: #FFF;
-	border-radius: 5%;
-  padding: 5%;
+  background: lightslategray;
+	border-radius: 25px;
+  padding: 10px;
 }
 
-title {
-  text-size: 100px;
-}
-life {
-	font-size: 20px;
-}
-
-#Messages {
-	height: 500px !important;
-	width: default;
-	box-sizing: border-box;
-	overflow: scroll;
+h3 {
+	max-height: 1500px;
+	overflow-y: scroll;
 }
