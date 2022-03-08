@@ -38,11 +38,21 @@ function onload(){
         document.getElementById("Message"+i);
     }
   })
+	function Change(){
+	if (RA.opacity === 0){
+		RA.opacity = 1;
+	}
+	if (RA.opacity === 1){
+		RA.opacity = 0;
+	}		
+}
 }
 
 function Connect(){
-  socket.emit("join", chatIDInput.value, usernameInput.value,RA);
+  socket.emit("join", chatIDInput.value, usernameInput.value);
 }
+
+
 
 function Send(){
   if (delay && messageInput.value.replace(/\s/g, "") != ""){
