@@ -18,7 +18,6 @@ httpserver.listen(3000);
 var rooms = [];
 var usernames = [];
 
-
 io.on('connection', function(socket) {
 	io.in(room).emit("recieve", "Server : " + username + " has left the chat.")
 	socket.on("join", function(room, username) {
@@ -35,6 +34,7 @@ io.on('connection', function(socket) {
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
 				socket.emit("join", room);
 			}
+      
 			else if (username === au2) {
 				if (room === master) {
 					room = master;
@@ -57,7 +57,7 @@ io.on('connection', function(socket) {
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
 				socket.emit("join", room);
 			}
-			else if ((username != au1), (username != au2)) {
+			else if ((username != au1), (username != au2), (username === au3)) {
 				if (room === master) {
 					room = "Lost";
 					RA.opacity = 1;
@@ -67,12 +67,14 @@ io.on('connection', function(socket) {
 					socket.join(room);
 					io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
 				}
-				rooms[socket.id] = room;
-				usernames[socket.id] = username;
-				socket.leaveAll();
-				socket.join(room);
-				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
-				socket.emit("join", room);
+				else if (room != master){
+          rooms[socket.id] = room;
+	  			usernames[socket.id] = username;
+		  		socket.leaveAll();
+			  	socket.join(room);
+				  io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
+				  socket.emit("join", room);
+        }
 			}
 		}
 	})
