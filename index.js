@@ -20,7 +20,7 @@ var usernames = [];
 
 
 io.on('connection', function(socket) {
-
+	io.in(room).emit("recieve", "Server : " + username + " has left the chat.")
 	socket.on("join", function(room, username) {
 		if (username && room != "") {
 			if (username === au1) {
@@ -30,7 +30,6 @@ io.on('connection', function(socket) {
 				}
 				rooms[socket.id] = room;
 				usernames[socket.id] = username;
-				io.in(room).emit("recieve", "Server : " + username + " has left the chat.")
 				socket.leaveAll();
 				socket.join(room);
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
@@ -42,7 +41,6 @@ io.on('connection', function(socket) {
 				}
 				rooms[socket.id] = room;
 				usernames[socket.id] = username;
-				io.in(room).emit("recieve", "Server : " + username + " has left the chat.")
 				socket.leaveAll();
 				socket.join(room);
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
@@ -54,7 +52,6 @@ io.on('connection', function(socket) {
 				}
 				rooms[socket.id] = room;
 				usernames[socket.id] = username;
-				io.in(room).emit("recieve", "Server : " + username + " has left the chat.")
 				socket.leaveAll();
 				socket.join(room);
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
@@ -63,16 +60,15 @@ io.on('connection', function(socket) {
 			else if ((username != au1), (username != au2)) {
 				if (room === master) {
 					room = "Lost";
+					RA.opacity = 1;
 					rooms[socket.id] = room;
 					usernames[socket.id] = username;
-					io.in(room).emit("recieve", "Server : " + username + " has left the chat.")
 					socket.leaveAll();
 					socket.join(room);
 					io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
 				}
 				rooms[socket.id] = room;
 				usernames[socket.id] = username;
-				io.in(room).emit("recieve", "Server : " + username + " has left the chat.");
 				socket.leaveAll();
 				socket.join(room);
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
