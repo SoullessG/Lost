@@ -30,7 +30,6 @@ io.on('connection', function(socket) {
 				}
 				rooms[socket.id] = room;
 				usernames[socket.id] = username;
-				io.in(room).emit("recieve", "Server : " + username + " has left the chat.")
 				socket.leaveAll();
 				socket.join(room);
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
@@ -42,7 +41,6 @@ io.on('connection', function(socket) {
 				}
 				rooms[socket.id] = room;
 				usernames[socket.id] = username;
-				io.in(room).emit("recieve", "Server : " + username + " has left the chat.")
 				socket.leaveAll();
 				socket.join(room);
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
@@ -54,7 +52,6 @@ io.on('connection', function(socket) {
 				}
 				rooms[socket.id] = room;
 				usernames[socket.id] = username;
-				io.in(room).emit("recieve", "Server : " + username + " has left the chat.")
 				socket.leaveAll();
 				socket.join(room);
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
@@ -65,14 +62,12 @@ io.on('connection', function(socket) {
 					room = "Lost";
 					rooms[socket.id] = room;
 					usernames[socket.id] = username;
-					io.in(room).emit("recieve", "Server : " + username + " has left the chat.")
 					socket.leaveAll();
 					socket.join(room);
 					io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
 				}
 				rooms[socket.id] = room;
-				usernames[socket.id] = username;
-				io.in(room).emit("recieve", "Server : " + username + " has left the chat.");
+				usernames[socket.id] = username;;
 				socket.leaveAll();
 				socket.join(room);
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
