@@ -4,6 +4,7 @@ const socketio = require("socket.io");
 const path = require("path");
 const au1 = process.env['User1'];
 const au2 = process.env['User2'];
+const au3 = process.env['User3'];
 const master = process.env['Master'];
 const app = express();
 const httpserver = http.Server(app);
@@ -17,7 +18,7 @@ httpserver.listen(3000);
 var rooms = [];
 var usernames = [];
 
-	
+
 io.on('connection', function(socket) {
 
 	socket.on("join", function(room, username) {
@@ -31,10 +32,22 @@ io.on('connection', function(socket) {
 				usernames[socket.id] = username
 				socket.leaveAll();
 				socket.join(room);
+				
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
 				socket.emit("join", room);
 			}
 			else if (username === au2){ 
+				if (room === master) {
+					room = master;
+				}
+				rooms[socket.id] = room;
+				usernames[socket.id] = username
+				socket.leaveAll();
+				socket.join(room);
+				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
+				socket.emit("join", room);
+			}
+			else if (username === au3){ 
 				if (room === master) {
 					room = master;
 				}
@@ -55,7 +68,6 @@ io.on('connection', function(socket) {
 				socket.join(room);
 				io.in(room).emit("recieve", "Server : " + username + " has entered the chat.");
 				socket.emit("join", room);
-				<scrip>
 			}
 		}
 	})

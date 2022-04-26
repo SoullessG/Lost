@@ -17,6 +17,7 @@ function onload(){
   dingSound = document.getElementById("Ding");
 	RA = (document.getElementById("RA").style.opacity = 0);
 	
+	
   socket.on("join", function(room){
     chatRoom.innerHTML = "Chatroom : " + room;
   })
@@ -41,7 +42,7 @@ function onload(){
 }
 
 function Connect(){
-  socket.emit("join", chatIDInput.value, usernameInput.value,RA);
+  socket.emit("join", chatIDInput.value, usernameInput.value,RA.opacity);
 }
 
 function Send(){
@@ -55,4 +56,12 @@ function Send(){
 
 function delayReset(){
   delay = true;
+}
+
+function opacityReset(RA){
+	RA = (document.getElementById("RA").style.opacity = 0);
+}
+
+function opacitySet(RA){
+	RA = (document.getElementById("RA").style.opacity = 1);
 }
